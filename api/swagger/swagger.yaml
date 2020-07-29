@@ -315,6 +315,127 @@ paths:
           schema:
             $ref: "#/definitions/ErrorResponse"
 
+  /question/{id}:
+    x-swagger-router-controller: question
+    get:
+      operationId: getOneQuestion
+      description: get a question
+      tags:
+        - question      
+      parameters:
+        - name: id
+          type: string
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/Question"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    put:
+      operationId: updateQuestion
+      description: update a question
+      parameters:
+        - name: id
+          description: question id
+          type: string
+          in: path
+          required: true
+        - name: question
+          description: question properties
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/Question"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GeneralResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"            
+    delete:
+      operationId: deleteQuestion
+      description: delete a question
+      parameters:
+        - name: id
+          description: question id
+          type: string
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GeneralResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"            
+  /question:
+    x-swagger-router-controller: question
+    get:
+      operationId: getAllQuestion
+      description: get the question list
+      tags:
+        - question      
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetQuestionsListResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    post:
+      operationId: saveQuestion
+      description: add a new question to the list
+      parameters:
+        - name: question
+          description: question properties
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/Question"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GeneralResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
+  /load/question:
+    x-swagger-router-controller: question
+    post:
+      operationId: loadQuestion
+      summary: load the question lists
+      tags:
+        - admin      
+      parameters:
+        - name: load
+          description: load properties
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/Load"
+      responses:
+        '204':
+          description: The resource was deleted successfully. 
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
   /load/module:
     x-swagger-router-controller: module
     post:
@@ -357,7 +478,7 @@ paths:
         default:
           description: Error
           schema:
-            $ref: "#/definitions/ErrorResponse"
+            $ref: "#/definitions/ErrorResponse"              
 
   /swagger:
     x-swagger-pipe: swagger_raw
@@ -388,6 +509,14 @@ definitions:
         type: array
         items: 
           $ref: "#/definitions/Module"
+  GetQuestionsListResponse:
+    required:
+      - questions
+    properties:
+      questions:
+        type: array
+        items: 
+          $ref: "#/definitions/Question"
   GetAssessmentsListResponse:
     required:
       - assessments
@@ -404,7 +533,7 @@ definitions:
         type: array
         items: 
           $ref: "#/definitions/AssessmentTemplate"  
-  
+          
   Question:
     required:
       - prompt
@@ -426,11 +555,11 @@ definitions:
 
   WeightedQuestion:
     required:
-      - question
+      - questionId
       - weight
     properties:
-      question:
-        $ref: "#/definitions/Question"
+      questionId:
+        type: string
       weight:
         type: integer
       

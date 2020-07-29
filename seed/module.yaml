@@ -9,17 +9,5 @@ modules:
       - "http://backingstandard1.com"
       - "http://backingstandard2.com"
     weightedQuestions:
-      - question:
-          prompt: "q1"
-          guidelines: "desc1" 
+      - questionId: "1234THISISAPROBLEM"
         weight: 1
-      - question:
-          prompt: "q2"
-          guidelines: "desc2" 
-          backingStandards:
-            - "http://guidelines1.com/"
-            - "http://guidelines2.com/"
-          supportingCulturalQuestions:
-            - "whodat?"
-            - "huh?"
-        weight: 2
