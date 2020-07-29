@@ -398,10 +398,10 @@ paths:
           schema:
             $ref: "#/definitions/ErrorResponse"
 
-  /questionLoad:
+  /load/question:
     x-swagger-router-controller: question
     post:
-      operationId: load
+      operationId: loadQuestion
       summary: load the question lists
       parameters:
         - name: load
@@ -417,6 +417,46 @@ paths:
           description: Error
           schema:
             $ref: "#/definitions/ErrorResponse"
+
+  /load/module:
+    x-swagger-router-controller: module
+    post:
+      operationId: loadModule
+      summary: load the module lists
+      parameters:
+        - name: load
+          description: load properties
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/Load"
+      responses:
+        '204':
+          description: The resource was deleted successfully. 
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"  
+
+  /load/assessmentTemplate:
+    x-swagger-router-controller: assessmentTemplate
+    post:
+      operationId: loadAssessmentTemplate
+      summary: load the assessmentTempalte lists
+      parameters:
+        - name: load
+          description: load properties
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/Load"
+      responses:
+        '204':
+          description: The resource was deleted successfully. 
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"              
 
   /swagger:
     x-swagger-pipe: swagger_raw
