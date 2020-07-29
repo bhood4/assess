@@ -22,6 +22,8 @@ paths:
     x-swagger-router-controller: assessment
     get:
       operationId: getOneAssessment
+      tags:
+        - assessment
       description: get an assessment
       parameters:
         - name: id
@@ -84,6 +86,8 @@ paths:
     get:
       operationId: getAllAssessment
       description: get the assessment list 
+      tags:
+        - assessment
       responses:
         "200":
           description: Success
@@ -118,6 +122,8 @@ paths:
     get:
       operationId: getOneAssessmentTemplate
       description: get an assessmentTemplate
+      tags:
+        - assessmentTemplate
       parameters:
         - name: id
           type: string
@@ -179,6 +185,8 @@ paths:
     get:
       operationId: getAllAssessmentTemplate
       description: get the assessmentTemplate list
+      tags:
+        - assessmentTemplate
       responses:
         "200":
           description: Success
@@ -213,6 +221,8 @@ paths:
     get:
       operationId: getOneModule
       description: get a module
+      tags:
+        - module
       parameters:
         - name: id
           type: string
@@ -274,6 +284,8 @@ paths:
     get:
       operationId: getAllModule
       description: get the module list
+      tags:
+        - module
       responses:
         "200":
           description: Success
@@ -308,6 +320,8 @@ paths:
     get:
       operationId: getOneQuestion
       description: get a question
+      tags:
+        - question      
       parameters:
         - name: id
           type: string
@@ -369,6 +383,8 @@ paths:
     get:
       operationId: getAllQuestion
       description: get the question list
+      tags:
+        - question      
       responses:
         "200":
           description: Success
@@ -403,6 +419,8 @@ paths:
     post:
       operationId: loadQuestion
       summary: load the question lists
+      tags:
+        - admin      
       parameters:
         - name: load
           description: load properties
@@ -423,6 +441,8 @@ paths:
     post:
       operationId: loadModule
       summary: load the module lists
+      tags:
+        - admin
       parameters:
         - name: load
           description: load properties
@@ -443,6 +463,8 @@ paths:
     post:
       operationId: loadAssessmentTemplate
       summary: load the assessmentTempalte lists
+      tags:
+        - admin
       parameters:
         - name: load
           description: load properties
