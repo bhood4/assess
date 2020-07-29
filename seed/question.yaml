@@ -1,0 +1,11 @@
+questions:
+  - prompt: "q1"
+    guidelines: "desc1" 
+  - prompt: "q2"
+    guidelines: "desc2" 
+    backingStandards:
+      - "http://guidelines1.com/"
+      - "http://guidelines2.com/"
+    supportingCulturalQuestions:
+      - "whodat?"
+      - "huh?"

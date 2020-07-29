@@ -1,2 +1,1 @@
-# assess
-assessment framework MVP in node swagger
+# Skeleton project for Swagger

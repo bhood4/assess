@@ -1,0 +1,586 @@
+swagger: "2.0"
+info:
+  version: "0.0.1"
+  title: Assess App
+# during dev, should point to your local machine
+host: localhost:10010
+# basePath prefixes all resource paths 
+basePath: /
+# 
+schemes:
+  # tip: remove http to make production-grade
+  - http
+  - https
+consumes:
+  - application/json
+produces:
+  - application/json
+
+paths:
+
+  /assessment/{id}:
+    x-swagger-router-controller: assessment
+    get:
+      operationId: getOneAssessment
+      description: get an assessment
+      parameters:
+        - name: id
+          type: string
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/Assessment"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    put:
+      operationId: updateAssessment
+      description: update an assessment
+      parameters:
+        - name: id
+          description: assessment id
+          type: string
+          in: path
+          required: true
+        - name: assessment
+          description: assessment properties
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/Assessment"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GeneralResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"            
+    delete:
+      operationId: deleteAssessment
+      description: delete an assessment
+      parameters:
+        - name: id
+          description: assessment id
+          type: string
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GeneralResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"            
+  /assessment:
+    x-swagger-router-controller: assessment
+    get:
+      operationId: getAllAssessment
+      description: get the assessment list 
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetAssessmentsListResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    post:
+      operationId: saveAssessment
+      description: add a new assessment to the list
+      parameters:
+        - name: assessment
+          description: assessment properties
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/Assessment"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GeneralResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
+  /assessmentTemplate/{id}:
+    x-swagger-router-controller: assessmentTemplate
+    get:
+      operationId: getOneAssessmentTemplate
+      description: get an assessmentTemplate
+      parameters:
+        - name: id
+          type: string
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/AssessmentTemplate"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    put:
+      operationId: updateAssessmentTemplate
+      description: update an assessmentTemplate
+      parameters:
+        - name: id
+          description: assessmentTemplate id
+          type: string
+          in: path
+          required: true
+        - name: assessmentTemplate
+          description: assessmentTemplate properties
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/AssessmentTemplate"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GeneralResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"            
+    delete:
+      operationId: deleteAssessmentTemplate
+      description: delete a assessmentTemplate
+      parameters:
+        - name: id
+          description: assessmentTemplate id
+          type: string
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GeneralResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"            
+  /assessmentTemplate:
+    x-swagger-router-controller: assessmentTemplate
+    get:
+      operationId: getAllAssessmentTemplate
+      description: get the assessmentTemplate list
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetAssessmentTemplatesListResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    post:
+      operationId: saveAssessmentTemplate
+      description: add a new assessmentTemplate to the list
+      parameters:
+        - name: assessmentTemplate
+          description: assessmentTemplate properties
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/AssessmentTemplate"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GeneralResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+            
+  /module/{id}:
+    x-swagger-router-controller: module
+    get:
+      operationId: getOneModule
+      description: get a module
+      parameters:
+        - name: id
+          type: string
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/Module"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    put:
+      operationId: updateModule
+      description: update a module
+      parameters:
+        - name: id
+          description: module id
+          type: string
+          in: path
+          required: true
+        - name: title
+          description: module properties
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/Module"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GeneralResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"            
+    delete:
+      operationId: deleteModule
+      description: delete a module
+      parameters:
+        - name: id
+          description: module id
+          type: string
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GeneralResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"            
+  /module:
+    x-swagger-router-controller: module
+    get:
+      operationId: getAllModule
+      description: get the module list
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetModulesListResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    post:
+      operationId: saveModule
+      description: add a new module to the list
+      parameters:
+        - name: module
+          description: module properties
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/Module"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GeneralResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
+  /question/{id}:
+    x-swagger-router-controller: question
+    get:
+      operationId: getOneQuestion
+      description: get a question
+      parameters:
+        - name: id
+          type: string
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/Question"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    put:
+      operationId: updateQuestion
+      description: update a question
+      parameters:
+        - name: id
+          description: question id
+          type: string
+          in: path
+          required: true
+        - name: question
+          description: question properties
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/Question"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GeneralResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"            
+    delete:
+      operationId: deleteQuestion
+      description: delete a question
+      parameters:
+        - name: id
+          description: question id
+          type: string
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GeneralResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"            
+  /question:
+    x-swagger-router-controller: question
+    get:
+      operationId: getAllQuestion
+      description: get the question list
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetQuestionsListResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    post:
+      operationId: saveQuestion
+      description: add a new question to the list
+      parameters:
+        - name: question
+          description: question properties
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/Question"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GeneralResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
+  /questionLoad:
+    x-swagger-router-controller: question
+    post:
+      operationId: load
+      summary: load the question lists
+      parameters:
+        - name: load
+          description: load properties
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/Load"
+      responses:
+        '204':
+          description: The resource was deleted successfully. 
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
+  /swagger:
+    x-swagger-pipe: swagger_raw
+# complex objects have schema definitions
+definitions:
+  ErrorResponse:
+    required:
+      - message
+    properties:
+      message:
+        type: string
+  GeneralResponse:
+    properties:
+      success:
+        type: number
+        description: returns 1 if successful
+      description:
+        type: string
+        description: a short comment 
+    required:
+      - success
+      - description
+  GetModulesListResponse:
+    required:
+      - modules
+    properties:
+      modules:
+        type: array
+        items: 
+          $ref: "#/definitions/Module"
+  GetQuestionsListResponse:
+    required:
+      - questions
+    properties:
+      questions:
+        type: array
+        items: 
+          $ref: "#/definitions/Question"
+  GetAssessmentsListResponse:
+    required:
+      - assessments
+    properties:
+      assessments:
+        type: array
+        items: 
+          $ref: "#/definitions/Assessment"          
+  GetAssessmentTemplatesListResponse:
+    required:
+      - assessmentTemplates
+    properties:
+      assessmentTemplates:
+        type: array
+        items: 
+          $ref: "#/definitions/AssessmentTemplate"  
+          
+  Question:
+    required:
+      - prompt
+    properties:
+      id:
+        type: string
+      prompt:
+        type: string
+      guidelines:
+        type: string
+      backingStandards:
+        type: array
+        items: 
+          type: string
+      supportingCulturalQuestions:
+        type: array
+        items: 
+          type: string
+
+  WeightedQuestion:
+    required:
+      - questionId
+      - weight
+    properties:
+      questionId:
+        type: string
+      weight:
+        type: integer
+      
+  Module:
+    required:
+      - name
+    properties:
+      name:
+        type: string
+      description:
+        type: string
+      sme:
+        type: array
+        items: 
+          type: string
+      scope:
+        type: string
+        enum: [team,organization,application]
+      backingStandards:
+        type: array
+        items: 
+          type: string
+      weightedQuestions:
+        type: array
+        items: 
+          $ref: "#/definitions/WeightedQuestion" 
+
+  AssessmentTemplate:
+    required:
+      - name
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      description:
+        type: string
+      moduleIds:
+        type: array
+        items: 
+          type: string
+ 
+  Assessment:
+    required:
+      - assessmentTemplateId
+    properties:
+      id:
+        type: string
+      assessmentTemplateId:
+        type: string      
+      lastModified:
+        type: string
+        format: date-time
+      notes:
+        type: string
+      participants:
+        type: array
+        items: 
+          type: string        
+      scores:
+        type: array
+        items: 
+          $ref: "#/definitions/QuestionScore"
+
+  QuestionScore:
+    required:
+      - moduleId
+      - questionId
+      - score
+    properties:
+      moduleId:
+        type: string   
+      questionId:
+        type: string         
+      score:
+        type: integer
+        
+  Load:
+    properties:
+      url:
+        type: string
+      clean:
+        type: boolean
+
+#TODO
+# People
