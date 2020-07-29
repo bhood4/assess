@@ -9,5 +9,5 @@ modules:
       - "http://backingstandard1.com"
       - "http://backingstandard2.com"
     weightedQuestions:
-      - questionId": "1234THISISAPROBLEM"
-        weight": 1
+      - questionId: "1234THISISAPROBLEM"
+        weight: 1
