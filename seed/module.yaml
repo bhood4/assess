@@ -1,0 +1,13 @@
+modules:
+  - name: "module1"
+    description: "desc1" 
+    sme:
+      - "Bill"
+      - "George"
+    scope: "organization"
+    backingStandards:
+      - "http://backingstandard1.com"
+      - "http://backingstandard2.com"
+    weightedQuestions:
+      - questionId": "1234THISISAPROBLEM"
+        weight": 1
