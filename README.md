@@ -19,6 +19,11 @@ npm install multer --save
 swagger project edit 
 swagger project run -m
 ```
+# TODO
+- ui for assessments
+- assessment report
+- persistence
+- search filter and sort on list services
 
 # persistence 
 - https://github.com/lucianopereira86/CRUD-NodeJS-Sequelize-Swagger-MySQL
