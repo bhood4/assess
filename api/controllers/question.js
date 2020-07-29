@@ -2,7 +2,7 @@
     // Include our "db"
     var db = require('../../config/db')();
     // Exports all the functions to perform on the db
-    module.exports = {getAllQuestion, saveQuestion, getOneQuestion, updateQuestion, deleteQuestion, load};
+    module.exports = {getAllQuestion, saveQuestion, getOneQuestion, updateQuestion, deleteQuestion, loadQuestion};
 
     function getAllQuestion(req, res, next) {
       res.json({ questions: db.find()});
@@ -36,15 +36,14 @@
             res.status(204).send();
         }
     }
-    function load(req, res, next) {
-        // /Users/billhood/Downloads/question.yaml
+    function loadQuestion(req, res, next) {
+        // https://raw.githubusercontent.com/bhood4/assess/master/seed/question.yaml
         var url = req.body.url;
         var clean = req.body.clean;
 
-        var path = require('path');
         const yaml = require('js-yaml');
         var request = require('request');
-        request.get(path.normalize(url), function (error, response, body) {
+        request.get(url, function (error, response, body) {
           if (!error && response.statusCode == 200) {
             var fileContents = body;
             let obj = yaml.safeLoadAll(fileContents)[0].questions;
@@ -56,14 +55,5 @@
 	    throw new Error('error loading '+url);
           }
         });
-
-        //const yaml = require('js-yaml');
-        //let fileContents = fs.readFileSync(url, 'utf8');
-        //let obj = yaml.safeLoadAll(fileContents)[0].questions;
-        //for(var i in obj) 
-        //{
-        //  db.save(obj[i]);
-        //}
-
         res.status(204).send();
     }
