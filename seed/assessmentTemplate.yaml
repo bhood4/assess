@@ -1,0 +1,5 @@
+assessmentTemplates:
+  - name: "at1"
+    description: "desc1" 
+    moduleIds:
+      - "1234THISISAPROBLEM"
